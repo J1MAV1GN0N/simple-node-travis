@@ -15,10 +15,10 @@ before_script:
 
 script:
   - docker --version # print the version for logging
-  - docker build -t travis-simple-node --build-arg FOOD=${FOOD} .
-  - docker tag travis-simple-node philchrist/travis-simple-node:latest
+  - docker build -t simple-node-travis --build-arg FOOD=${FOOD} .
+  - docker tag simple-node-travis philchrist/simple-node-travis:latest
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - echo "$FAVORITE_FOOD"
-  - docker push philchrist/travis-simple-node
+  - docker push philchrist/simple-node-travis
